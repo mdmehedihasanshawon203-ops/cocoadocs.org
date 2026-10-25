@@ -2,5 +2,12 @@ language: ruby
 branches:
   only:
     - master
+env:
+  global:
+    - COVERAGE=true
 before_install:
   - gem install bundler
+after_success:
+  - curl https://qlty.sh | sh
+  - export PATH="$HOME/.qlty/bin:$PATH"
+  - qlty coverage publish --strip-prefix "$TRAVIS_BUILD_DIR" coverage/.resultset.json

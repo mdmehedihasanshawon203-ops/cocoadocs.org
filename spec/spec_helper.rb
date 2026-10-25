@@ -4,6 +4,15 @@ $:.unshift((ROOT + 'classes').to_s)
 $:.unshift((ROOT + 'spec').to_s)
 
 require 'bundler/setup'
+
+if ENV['COVERAGE']
+  require 'simplecov'
+  SimpleCov.start do
+    add_filter '/spec/'
+    add_filter '/vendor/'
+  end
+end
+
 require 'bacon'
 require 'pretty_bacon'
 require 'mocha-on-bacon'
