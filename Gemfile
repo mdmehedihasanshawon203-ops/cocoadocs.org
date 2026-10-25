@@ -37,4 +37,6 @@ group :development do
   gem 'mocha'
   gem 'rubocop'
   gem 'pry'
+  # 0.17.x is the last series supporting Ruby 2.3 (see .ruby-version)
+  gem 'simplecov', '~> 0.17.1', :require => false
 end
